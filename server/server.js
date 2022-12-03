@@ -3,7 +3,7 @@ const path = require('path');
 const db = require('./config/connection');
 // setup for ApolloServer, schema and middleware
 const { ApolloServer } = require("apollo-server-express");
-const { typeDef, resolver } = require("./schema");
+const { typeDefs, resolvers } = require("./schema");
 const { authMiddleware } = require("./utils/auth");
 
 const app = express();
@@ -14,8 +14,8 @@ app.use(express.json());
 
 // setup ApolloServer from schema
 const server = new ApolloServer({
-  typeDef,
-  resolver, 
+  typeDefs,
+  resolvers, 
   context: authMiddleware,
 });
 
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-const startApolloServer = async (typeDef, resolver) => {
+const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
 
@@ -41,4 +41,4 @@ const startApolloServer = async (typeDef, resolver) => {
 };
 
 // start server
-startApolloServer(typeDef, resolver);
+startApolloServer(typeDefs, resolvers);
