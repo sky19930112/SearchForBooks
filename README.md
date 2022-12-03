@@ -21,7 +21,7 @@ live site: https://shielded-earth-86291.herokuapp.com/
 * the app is able to open through npm run develop
 * but herokuapp site still run into issue
 * So far I did connect heroku to MangoDB as instruction
-* I am still trying to figure out issues
+* I am still trying to figure out issues for both app and heroku
 
 
 
