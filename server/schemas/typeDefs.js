@@ -18,6 +18,15 @@ const typeDefs = gql`
         link: String
     }
 
+    input BookInput {
+        bookId: String!
+        title: String!
+        image: String
+        authors: [String]
+        description: String!
+        link: String
+    }
+
     type Auth {
         token: ID!
         user: User
@@ -33,14 +42,6 @@ const typeDefs = gql`
         saveBook(bookData: BookInput!): User
         removeBook(bookId: ID!): User
 
-    input BookInput {
-        bookId: String!
-        title: String!
-        image: String
-        authors: [String]
-        description: String!
-        link: String
-        }
     }
 `;
 
